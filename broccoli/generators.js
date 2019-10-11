@@ -85,3 +85,24 @@ Blockly.Arduino['do'] = function (block) {
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.Arduino.ORDER_NONE];
 };
+
+// IO block generators
+
+Blockly.Arduino['sr04'] = function (block) {
+    var number_echo_pin = block.getFieldValue('echo_pin');
+    var number_trig_pin = block.getFieldValue('trig_pin');
+    // TODO: Assemble Arduino into code variable.
+
+    const blockId = bcl_block_count++;
+    const objectName = "sr04_" + blockId
+    let declarationCode = "SR04 " + objectName + " = SR04(" + number_echo_pin + ", " + number_trig_pin + ");"
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    Blockly.Arduino.addInclude('#include <SR04.h>');
+
+    var code = objectName + ".loop();";
+
+    var code = '...';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_NONE];
+};

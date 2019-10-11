@@ -1,3 +1,6 @@
+Blockly.Blocks.bcl_func.HUE = 15;
+Blockly.Blocks.bcl_io.HUE = 120;
+
 Blockly.Blocks['ai'] = {
     init: function () {
         this.appendDummyInput()
@@ -9,7 +12,15 @@ Blockly.Blocks['ai'] = {
         this.appendDummyInput()
             .appendField("mode");
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([["Manual", "Man"], ["Auto", "Auto"]]), "Mode");
+            .appendField(new Blockly.FieldDropdown([["Manual", "Man"], ["Auto", "Auto"], ["Cascade", "Cas"]]), "Mode");
+        this.appendDummyInput()
+            .appendField("xd_scale (low-high)")
+            .appendField(new Blockly.FieldNumber(0), "xd_low")
+            .appendField(new Blockly.FieldNumber(0), "xd_high");
+        this.appendDummyInput()
+            .appendField("out_scale (low-high)")
+            .appendField(new Blockly.FieldNumber(0), "out_low")
+            .appendField(new Blockly.FieldNumber(0), "out_high");
         this.setInputsInline(true);
         this.setOutput(true, null);
         this.setColour(15);
@@ -71,6 +82,28 @@ Blockly.Blocks['do'] = {
         this.setOutput(true, null);
         this.setColour(15);
         this.setTooltip("DO block");
+        this.setHelpUrl("");
+    }
+};
+
+
+// IO blocks
+Blockly.Blocks['sr04'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("SR04");
+        this.appendDummyInput()
+            .appendField("ECHO_PIN");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldNumber(0, 0, 32), "echo_pin");
+        this.appendDummyInput()
+            .appendField("TRIG_PIN");
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldNumber(0, 0, 32), "trig_pin");
+        this.setInputsInline(true);
+        this.setOutput(true, null);
+        this.setColour(120);
+        this.setTooltip("");
         this.setHelpUrl("");
     }
 };
