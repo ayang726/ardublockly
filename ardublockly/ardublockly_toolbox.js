@@ -269,15 +269,15 @@ Ardublockly.TOOLBOX_XML =
                     <field name="mode">Auto</field>
                 </block>
             </value>
-        </block>`+
-    `<block type="variables_set">
-<field name="VAR" id="NoFOK%;.O*=)lJOTJ^Gz">sr04_out</field>
-<value name="VALUE">
-  <block type="sr04">
-    <field name="echo_pin">0</field>
-    <field name="trig_pin">0</field>
-  </block>
-</value>
-</block>`+
-    '  </category>' +
+        </block>
+        <block type="variables_set">
+            <field name="VAR" id="NoFOK%;.O*=)lJOTJ^Gz">sr04_out</field>
+            <value name="VALUE">
+            <block type="sr04">
+                <field name="echo_pin">0</field>
+                <field name="trig_pin">0</field>
+            </block>
+            </value>
+        </block>`
+'  </category>' +
     '</xml>';

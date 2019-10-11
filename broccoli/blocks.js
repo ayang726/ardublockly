@@ -1,3 +1,11 @@
+
+
+goog.provide('Blockly.Blocks.bcl_func');
+goog.provide('Blockly.Blocks.bcl_io');
+
+goog.require('Blockly.Blocks');
+goog.require('Blockly.Types');
+
 Blockly.Blocks.bcl_func.HUE = 15;
 Blockly.Blocks.bcl_io.HUE = 120;
 
