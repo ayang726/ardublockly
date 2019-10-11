@@ -14,13 +14,21 @@ let bcl_block_count = 0;
 Blockly.Arduino['ai'] = function (block) {
     var value_fieldvalue = Blockly.Arduino.valueToCode(block, 'fieldValue', Blockly.Arduino.ORDER_ATOMIC);
     var dropdown_mode = block.getFieldValue('Mode');
+    let number_xd_low = block.getFieldValue("xd_low")
+    let number_xd_high = block.getFieldValue("xd_high")
+    let number_out_low = block.getFieldValue("out_low")
+    let number_out_high = block.getFieldValue("out_high")
 
     const blockId = bcl_block_count++;
     const objectName = "ai_" + blockId
     let declarationCode = "AI " + objectName + " = AI(&" + value_fieldvalue + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
-    let setupCode = objectName + ".mode = " + dropdown_mode + ";"
+    let setupCode = objectName + ".mode = '" + dropdown_mode + "';\n"
+    setupCode += objectName + ".xd_scale_high = " + number_xd_high + ";\n"
+    setupCode += objectName + ".xd_scale_low = " + number_xd_low + ";\n"
+    setupCode += objectName + ".out_scale_high += " + number_out_high + ";\n"
+    setupCode += objectName + ".out_scale_low = +" + number_out_low + ";\n"
     Blockly.Arduino.addSetup("bcl_block_" + blockId, setupCode, false)
 
     var code = objectName + ".loop();";
@@ -58,7 +66,7 @@ Blockly.Arduino['di'] = function (block) {
     let declarationCode = "DI " + objectName + " = DI(&" + value_fieldvalue + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
-    let setupCode = objectName + ".mode = " + dropdown_mode + ";"
+    let setupCode = objectName + ".mode = '" + dropdown_mode + "';"
     Blockly.Arduino.addSetup("bcl_block_" + blockId, setupCode, false)
 
     var code = objectName + ".loop();";
@@ -77,7 +85,7 @@ Blockly.Arduino['do'] = function (block) {
     let declarationCode = "DO " + objectName + " = DO(&" + value_input + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
-    let setupCode = objectName + ".mode = " + dropdown_mode + ";"
+    let setupCode = objectName + ".mode = '" + dropdown_mode + "';"
     Blockly.Arduino.addSetup("bcl_block_" + blockId, setupCode, false)
 
     var code = objectName + ".loop();";

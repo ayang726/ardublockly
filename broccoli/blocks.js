@@ -20,7 +20,7 @@ Blockly.Blocks['ai'] = {
         this.appendDummyInput()
             .appendField("mode");
         this.appendDummyInput()
-            .appendField(new Blockly.FieldDropdown([["Manual", "Man"], ["Auto", "Auto"], ["Cascade", "Cas"]]), "Mode");
+            .appendField(new Blockly.FieldDropdown([["Manual", "M"], ["Auto", "A"]]), "Mode");
         this.appendDummyInput()
             .appendField("xd_scale (low-high)")
             .appendField(new Blockly.FieldNumber(0), "xd_low")
@@ -46,7 +46,7 @@ Blockly.Blocks['di'] = {
             .appendField("fieldValue");
         this.appendDummyInput()
             .appendField("mode")
-            .appendField(new Blockly.FieldDropdown([["Manual", "Man"], ["Auto", "Auto"]]), "mode");
+            .appendField(new Blockly.FieldDropdown([["Manual", "M"], ["Auto", "A"]]), "mode");
         this.setInputsInline(true);
         this.setOutput(true, "Boolean");
         this.setColour(15);
@@ -85,7 +85,7 @@ Blockly.Blocks['do'] = {
             .appendField("in_d");
         this.appendDummyInput()
             .appendField("mode")
-            .appendField(new Blockly.FieldDropdown([["Manual", "Man"], ["Auto", "Auto"]]), "mode");
+            .appendField(new Blockly.FieldDropdown([["Manual", "M"], ["Auto", "A"], ["Cascade", "C"]]), "mode");
         this.setInputsInline(true);
         this.setOutput(true, null);
         this.setColour(15);
