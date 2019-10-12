@@ -174,69 +174,107 @@ Ardublockly.TOOLBOX_XML =
     '    <block type="infinite_loop"></block>' +
     '  </category>' +
     '  <sep></sep>' +
-    '  <category id="catAudio" name="Audio">' +
-    '    <block type="io_tone">' +
-    '      <field name="TONEPIN">0</field>' +
-    '      <value name="FREQUENCY">' +
-    '        <shadow type="math_number">' +
-    '          <field name="NUM">220</field>' +
-    '        </shadow>' +
-    '      </value>' +
-    '    </block>' +
-    '    <block type="io_notone"></block>' +
-    '  </category>' +
+    // '  <category id="catAudio" name="Audio">' +
+    // '    <block type="io_tone">' +
+    // '      <field name="TONEPIN">0</field>' +
+    // '      <value name="FREQUENCY">' +
+    // '        <shadow type="math_number">' +
+    // '          <field name="NUM">220</field>' +
+    // '        </shadow>' +
+    // '      </value>' +
+    // '    </block>' +
+    // '    <block type="io_notone"></block>' +
+    // '  </category>' +
+    // '  <sep></sep>' +
+    // '  <category id="catMotors" name="Motors">' +
+    // '    <block type="servo_write">' +
+    // '      <value name="SERVO_ANGLE">' +
+    // '        <block type="math_number">' +
+    // '          <field name="NUM">90</field>' +
+    // '        </block>' +
+    // '      </value>' +
+    // '    </block>' +
+    // '    <block type="servo_read"></block>' +
+    // '    <block type="stepper_config">' +
+    // '      <field name="STEPPER_NUMBER_OF_PINS">2</field>' +
+    // '      <field name="STEPPER_PIN1">1</field>' +
+    // '      <field name="STEPPER_PIN2">2</field>' +
+    // '      <value name="STEPPER_STEPS">' +
+    // '        <block type="math_number">' +
+    // '          <field name="NUM">100</field>' +
+    // '        </block>' +
+    // '      </value>' +
+    // '      <value name="STEPPER_SPEED">' +
+    // '        <block type="math_number">' +
+    // '          <field name="NUM">10</field>' +
+    // '        </block>' +
+    // '      </value>' +
+    // '    </block>' +
+    // '    <block type="stepper_step">' +
+    // '      <value name="STEPPER_STEPS">' +
+    // '        <block type="math_number">' +
+    // '          <field name="NUM">10</field>' +
+    // '        </block>' +
+    // '      </value>' +
+    // '    </block>' +
+    // '  </category>' +
+    // '  <sep></sep>' +
+    // '  <category id="catComms" name="Comms">' +
+    // '    <block type="serial_setup"></block>' +
+    // '    <block type="serial_print"></block>' +
+    // '    <block type="text_prompt_ext">' +
+    // '      <value name="TEXT">' +
+    // '        <block type="text"></block>' +
+    // '      </value>' +
+    // '    </block>' +
+    // '    <block type="spi_setup"></block>' +
+    // '    <block type="spi_transfer"></block>' +
+    // '    <block type="spi_transfer_return"></block>' +
+    // '  </category>' +
     '  <sep></sep>' +
-    '  <category id="catMotors" name="Motors">' +
-    '    <block type="servo_write">' +
-    '      <value name="SERVO_ANGLE">' +
-    '        <block type="math_number">' +
-    '          <field name="NUM">90</field>' +
-    '        </block>' +
-    '      </value>' +
-    '    </block>' +
-    '    <block type="servo_read"></block>' +
-    '    <block type="stepper_config">' +
-    '      <field name="STEPPER_NUMBER_OF_PINS">2</field>' +
-    '      <field name="STEPPER_PIN1">1</field>' +
-    '      <field name="STEPPER_PIN2">2</field>' +
-    '      <value name="STEPPER_STEPS">' +
-    '        <block type="math_number">' +
-    '          <field name="NUM">100</field>' +
-    '        </block>' +
-    '      </value>' +
-    '      <value name="STEPPER_SPEED">' +
-    '        <block type="math_number">' +
-    '          <field name="NUM">10</field>' +
-    '        </block>' +
-    '      </value>' +
-    '    </block>' +
-    '    <block type="stepper_step">' +
-    '      <value name="STEPPER_STEPS">' +
-    '        <block type="math_number">' +
-    '          <field name="NUM">10</field>' +
-    '        </block>' +
-    '      </value>' +
-    '    </block>' +
-    '  </category>' +
+    `<category id="Broccoli_Logical" name="BCL_Logical">
+    <block type="variables_set">
+        <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+        <value name="VALUE">
+        <block type="bde"></block>
+        </value>
+    </block>
+    <block type="variables_set">
+        <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+        <value name="VALUE">
+        <block type="pde"></block>
+        </value>
+    </block>
+    <block type="variables_set">
+        <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+        <value name="VALUE">
+        <block type="nde"></block>
+        </value>
+    </block>
+    <block type="variables_set">
+        <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+        <value name="VALUE">
+        <block type="sr"></block>
+        </value>
+    </block>
+    <block type="variables_set">
+        <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+        <value name="VALUE">
+        <block type="rs"></block>
+        </value>
+    </block>
+    <block type="variables_set">
+        <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+        <value name="VALUE">
+        <block type="xfr">
+        <field name="selector">0</field>
+        </block>
+        </value>
+    </block>
+</category>`+
     '  <sep></sep>' +
-    '  <category id="catComms" name="Comms">' +
-    '    <block type="serial_setup"></block>' +
-    '    <block type="serial_print"></block>' +
-    '    <block type="text_prompt_ext">' +
-    '      <value name="TEXT">' +
-    '        <block type="text"></block>' +
-    '      </value>' +
-    '    </block>' +
-    '    <block type="spi_setup"></block>' +
-    '    <block type="spi_transfer"></block>' +
-    '    <block type="spi_transfer_return"></block>' +
-    '  </category>' +
-    '  <sep></sep>' +
+
     '  <category id="Broccoli" name="BCL">' +
-    // '   <block type="ai"></block>' +
-    // '   <block type="di"></block>' +
-    // '   <block type="gt"></block>' +
-    // '   <block type="do"></block>' +
     `   <block type="variables_set">
             <field name="VAR" id="D*BmETP^Q]f}7*|a3MX7">ai_out</field>
             <value name="VALUE">
@@ -251,15 +289,6 @@ Ardublockly.TOOLBOX_XML =
             <block type="di">
                 <field name="mode">A</field>
             </block>
-            </value>
-        </block>
-        <block type="variables_set">
-            <field name="VAR" id="O}I4Qbu)h-!w.ZZmjU-P">greaterThan_out</field>
-            <value name="VALUE">
-                <block type="gt">
-                    <field name="comp_value">0</field>
-                    <field name="sp_value">0</field>
-                </block>
             </value>
         </block>
         <block type="variables_set">
@@ -278,6 +307,10 @@ Ardublockly.TOOLBOX_XML =
                 <field name="trig_pin">0</field>
             </block>
             </value>
-        </block>`
+        </block>
+        
+        `
 '  </category>' +
+
+
     '</xml>';

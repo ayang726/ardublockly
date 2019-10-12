@@ -11,6 +11,7 @@ goog.require('Blockly.Arduino');
 
 let bcl_block_count = 0;
 let libPath = "./";
+const ControlSysLibrary = "ControlSys"
 
 Blockly.Arduino['ai'] = function (block) {
     var value_fieldvalue = Blockly.Arduino.valueToCode(block, 'fieldValue', Blockly.Arduino.ORDER_ATOMIC);
@@ -23,7 +24,7 @@ Blockly.Arduino['ai'] = function (block) {
     const blockId = bcl_block_count++;
     const objectName = "ai_" + blockId
 
-    Blockly.Arduino.addInclude('AI', "#include \"" + libPath + "AI.h\"");
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
 
     let declarationCode = "AI " + objectName + " = AI(&" + value_fieldvalue + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
@@ -51,7 +52,7 @@ Blockly.Arduino['gt'] = function (block) {
     const blockId = bcl_block_count++;
     const objectName = "gt_" + blockId
 
-    Blockly.Arduino.addInclude('GT', "#include \"" + libPath + "GT.h\"");
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
 
     let declarationCode = "";
     // if value comp is not hooked up
@@ -88,7 +89,7 @@ Blockly.Arduino['di'] = function (block) {
     const blockId = bcl_block_count++;
     const objectName = "di_" + blockId
 
-    Blockly.Arduino.addInclude('DI', "#include \"" + libPath + "DI.h\"");
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
 
     let declarationCode = "DI " + objectName + " = DI(&" + value_fieldvalue + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
@@ -110,7 +111,7 @@ Blockly.Arduino['do'] = function (block) {
     const blockId = bcl_block_count++;
     const objectName = "do_" + blockId
 
-    Blockly.Arduino.addInclude('DO', "#include \"" + libPath + "DO.h\"");
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
 
     let declarationCode = "DO " + objectName + " = DO(&" + value_input + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
@@ -134,14 +135,118 @@ Blockly.Arduino['sr04'] = function (block) {
     const blockId = bcl_block_count++;
     const objectName = "sr04_" + blockId
 
-    Blockly.Arduino.addInclude('SR04', "#include \"" + libPath + "SR04.h\"");
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
 
     let declarationCode = "SR04 " + objectName + " = SR04(" + number_echo_pin + ", " + number_trig_pin + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
-
-    Blockly.Arduino.addInclude("SR04", '#include <SR04.h>');
 
     var code = objectName + ".Distance()";
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
+Blockly.Arduino['bde'] = function (block) {
+    const value_input = Blockly.Arduino.valueToCode(block, "input", Blockly.Arduino.ORDER_ATOMIC)
+
+    const blockId = bcl_block_count++;
+    const objectName = "bde_" + blockId
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    let declarationCode = "BDE " + objectName + " = BDE(&" + value_input + ");"
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    let code = objectName + ".loop()";
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['pde'] = function (block) {
+    const value_input = Blockly.Arduino.valueToCode(block, "input", Blockly.Arduino.ORDER_ATOMIC)
+
+    const blockId = bcl_block_count++;
+    const objectName = "pde_" + blockId
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    let declarationCode = "PDE " + objectName + " = PDE(&" + value_input + ");"
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    let code = objectName + ".loop()";
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['nde'] = function (block) {
+    const value_input = Blockly.Arduino.valueToCode(block, "input", Blockly.Arduino.ORDER_ATOMIC)
+
+    const blockId = bcl_block_count++;
+    const objectName = "nde_" + blockId
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    let declarationCode = "NDE " + objectName + " = NDE(&" + value_input + ");"
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    let code = objectName + ".loop()";
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['sr'] = function (block) {
+    const value_set = Blockly.Arduino.valueToCode(block, "set", Blockly.Arduino.ORDER_ATOMIC)
+    const value_reset = Blockly.Arduino.valueToCode(block, "reset", Blockly.Arduino.ORDER_ATOMIC)
+
+    const blockId = bcl_block_count++;
+    const objectName = "sr_" + blockId
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    let declarationCode = "SR " + objectName + " = SR(&" + value_set + ", &" + value_reset + ");"
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    let code = objectName + ".loop()";
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino['rs'] = function (block) {
+    const value_set = Blockly.Arduino.valueToCode(block, "set", Blockly.Arduino.ORDER_ATOMIC)
+    const value_reset = Blockly.Arduino.valueToCode(block, "resetvalue_reset", Blockly.Arduino.ORDER_ATOMIC)
+
+    const blockId = bcl_block_count++;
+    const objectName = "rs_" + blockId
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    let declarationCode = `RS ${objectName} = RS(&${value_set}, &${value_reset})`;
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    let code = objectName + '.loop()';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
+
+Blockly.Arduino['xfr'] = function (block) {
+    const value_in1 = Blockly.Arduino.valueToCode(block, "in1", Blockly.Arduino.ORDER_ATOMIC)
+    const value_in2 = Blockly.Arduino.valueToCode(block, "in2", Blockly.Arduino.ORDER_ATOMIC)
+    const value_selector = Blockly.Arduino.valueToCode(block, "selector", Blockly.Arduino.ORDER_ATOMIC)
+    const fieldIn_selector = block.getFieldValue("selector_input")
+
+    const blockId = bcl_block_count++;
+    const objectName = "xfr_" + blockId
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    if (value_selector == "") {
+        let variableCode = `bool selectorVar_${blockId} = ${fieldIn_selector};`
+        Blockly.Arduino.addVariable("bcl_var_" + blockId, variableCode, false)
+    }
+
+    let declarationCode = `XFR ${objectName} = XFR(&${value_in1}, &${value_in2}, &${value_selector !== "" ? value_selector : 'selectorVar_' + blockId})`;
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+
+    let code = objectName + '.loop()';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+}
