@@ -17,7 +17,7 @@ Blockly.Blocks['ai'] = {
         this.appendDummyInput()
             .appendField("fieldValue");
         this.appendValueInput("fieldValue")
-            .setCheck("Number");
+            .setCheck("Decimal");
         this.appendDummyInput()
             .appendField("mode");
         this.appendDummyInput()
@@ -42,7 +42,7 @@ Blockly.Blocks['ai'] = {
 };
 
 Blockly.Blocks['di'] = {
-    outputType: Blockly.Types.DECIMAL,
+    outputType: Blockly.Types.BOOLEAN,
     init: function () {
         this.appendDummyInput()
             .appendField("DI");
@@ -91,12 +91,12 @@ Blockly.Blocks['gt'] = {
 };
 
 Blockly.Blocks['do'] = {
-    outputType: Blockly.Types.NUMBER,
+    outputType: Blockly.Types.BOOLEAN   ,
     init: function () {
         this.appendDummyInput()
             .appendField("DO");
         this.appendValueInput("input")
-            .setCheck("Decimal")
+            .setCheck("Boolean")
             .appendField("in_d");
         this.appendDummyInput()
             .appendField("mode")
