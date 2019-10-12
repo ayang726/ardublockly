@@ -10,6 +10,7 @@ goog.require('Blockly.Arduino');
 // Blockly.Arduino.addSetup('servo_' + pinKey, setupCode, true);
 
 let bcl_block_count = 0;
+let libPath = "./";
 
 Blockly.Arduino['ai'] = function (block) {
     var value_fieldvalue = Blockly.Arduino.valueToCode(block, 'fieldValue', Blockly.Arduino.ORDER_ATOMIC);
@@ -21,18 +22,21 @@ Blockly.Arduino['ai'] = function (block) {
 
     const blockId = bcl_block_count++;
     const objectName = "ai_" + blockId
+
+    Blockly.Arduino.addInclude('AI', "#include \"" + libPath + "AI.h\"");
+
     let declarationCode = "AI " + objectName + " = AI(&" + value_fieldvalue + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
     let setupCode = objectName + ".mode = '" + dropdown_mode + "';\n"
     setupCode += objectName + ".xd_scale_high = " + number_xd_high + ";\n"
     setupCode += objectName + ".xd_scale_low = " + number_xd_low + ";\n"
-    setupCode += objectName + ".out_scale_high += " + number_out_high + ";\n"
-    setupCode += objectName + ".out_scale_low = +" + number_out_low + ";\n"
+    setupCode += objectName + ".out_scale_high = " + number_out_high + ";\n"
+    setupCode += objectName + ".out_scale_low = " + number_out_low + ";\n"
     Blockly.Arduino.addSetup("bcl_block_" + blockId, setupCode, false)
 
-    var code = objectName + ".loop();";
-    return [code, Blockly.Arduino.ORDER_NONE];
+    var code = objectName + ".loop()";
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 
@@ -41,17 +45,37 @@ Blockly.Arduino['gt'] = function (block) {
     var number_comp_value = block.getFieldValue('comp_value');
     var value_comp = Blockly.Arduino.valueToCode(block, 'comp', Blockly.Arduino.ORDER_ATOMIC);
     var number_sp_value = block.getFieldValue('sp_value');
+    var value_sp = Blockly.Arduino.valueToCode(block, 'sp', Blockly.Arduino.ORDER_ATOMIC);
     // TODO: Assemble Arduino into code variable.
 
     const blockId = bcl_block_count++;
     const objectName = "gt_" + blockId
 
-    let declarationCode = "GT " + objectName + " = GT(&" + value_comp + ", " + number_sp_value + ");"
-    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
+    Blockly.Arduino.addInclude('GT', "#include \"" + libPath + "GT.h\"");
 
-    var code = objectName + ".loop();";
+    let declarationCode = "";
+    // if value comp is not hooked up
+    let declaringObjCode = "";
+    if (value_comp == "") {
+        declarationCode += "float compVar_" + blockId + " = " + number_comp_value + "; \n";
+        declaringObjCode += "GT " + objectName + " = GT(&compVar_" + blockId + ",";
+    } else {
+        declaringObjCode += "GT " + objectName + " = GT(&" + value_comp + ",";
+    }
+
+    if (value_sp == "") {
+        declarationCode += "float spVar_" + blockId + " = " + number_sp_value + ";\n";
+        declaringObjCode += " &spVar_" + blockId + ");\n";
+    }
+    else {
+        declaringObjCode += " &" + value_sp + ");\n"
+    }
+
+    Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode + declaringObjCode);
+
+    var code = objectName + ".loop()";
     // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Arduino.ORDER_NONE];
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 
@@ -63,16 +87,19 @@ Blockly.Arduino['di'] = function (block) {
 
     const blockId = bcl_block_count++;
     const objectName = "di_" + blockId
+
+    Blockly.Arduino.addInclude('DI', "#include \"" + libPath + "DI.h\"");
+
     let declarationCode = "DI " + objectName + " = DI(&" + value_fieldvalue + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
     let setupCode = objectName + ".mode = '" + dropdown_mode + "';"
     Blockly.Arduino.addSetup("bcl_block_" + blockId, setupCode, false)
 
-    var code = objectName + ".loop();";
+    var code = objectName + ".loop()";
 
     // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Arduino.ORDER_NONE];
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 
@@ -82,16 +109,19 @@ Blockly.Arduino['do'] = function (block) {
     // TODO: Assemble Arduino into code variable.
     const blockId = bcl_block_count++;
     const objectName = "do_" + blockId
+
+    Blockly.Arduino.addInclude('DO', "#include \"" + libPath + "DO.h\"");
+
     let declarationCode = "DO " + objectName + " = DO(&" + value_input + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
     let setupCode = objectName + ".mode = '" + dropdown_mode + "';"
     Blockly.Arduino.addSetup("bcl_block_" + blockId, setupCode, false)
 
-    var code = objectName + ".loop();";
+    var code = objectName + ".loop()";
 
     // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Arduino.ORDER_NONE];
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 // IO block generators
@@ -103,14 +133,15 @@ Blockly.Arduino['sr04'] = function (block) {
 
     const blockId = bcl_block_count++;
     const objectName = "sr04_" + blockId
+
+    Blockly.Arduino.addInclude('SR04', "#include \"" + libPath + "SR04.h\"");
+
     let declarationCode = "SR04 " + objectName + " = SR04(" + number_echo_pin + ", " + number_trig_pin + ");"
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);
 
-    Blockly.Arduino.addInclude('#include <SR04.h>');
+    Blockly.Arduino.addInclude("SR04", '#include <SR04.h>');
 
-    var code = objectName + ".loop();";
-
-    var code = '...';
+    var code = objectName + ".Distance()";
     // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Arduino.ORDER_NONE];
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

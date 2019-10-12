@@ -1,0 +1,105 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="variables_set" id="u-nK=dtibh.ZId=Jlz}u" x="47" y="33">
+    <field name="VAR">digitalPinIn</field>
+    <value name="VALUE">
+      <block type="io_digitalread" id="_92r^%j1,XXYrgY*I1b]">
+        <field name="PIN">4</field>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="zg?^H^o#*F#GINK6+Ql3">
+        <field name="VAR">sr04_out</field>
+        <value name="VALUE">
+          <block type="sr04" id="]yDJz^4W)]lBjN_uw1=Q">
+            <field name="echo_pin">0</field>
+            <field name="trig_pin">0</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="variables_set" id="3Y8dT`oMlU{HHS*J~[8O" x="45" y="126">
+    <field name="VAR">ai_out</field>
+    <value name="VALUE">
+      <block type="ai" id="R0o|.]DVVzlGaj_bO0rv">
+        <field name="Mode">A</field>
+        <field name="xd_low">0</field>
+        <field name="xd_high">400</field>
+        <field name="out_low">0</field>
+        <field name="out_high">400</field>
+        <value name="fieldValue">
+          <block type="variables_get" id="{GOF(`NVK#j|U@/7|bPF">
+            <field name="VAR">sr04_out</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="Ti9y,(01E%*@rT8gGT,j">
+        <field name="VAR">di_out</field>
+        <value name="VALUE">
+          <block type="di" id="s5OEb-7lt]6Hu@{-9?-?">
+            <field name="mode">A</field>
+            <value name="fieldValue">
+              <block type="variables_get" id="Nl~6F9t~~VF3xQth6EmO">
+                <field name="VAR">digitalPinIn</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="variables_set" id="`ULiMZF:Z(Q@iP[]`JOG" x="40" y="248">
+    <field name="VAR">product</field>
+    <value name="VALUE">
+      <block type="math_arithmetic" id="!e[(@-XS;FuUUzpb:)PB">
+        <field name="OP">MULTIPLY</field>
+        <value name="A">
+          <block type="variables_get" id="vT?k`n`_sr.!E3EH`W%A">
+            <field name="VAR">di_out</field>
+          </block>
+        </value>
+        <value name="B">
+          <block type="math_number" id="yU^v@xNkZ`hTjzy~zw6N">
+            <field name="NUM">25.5</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="|AZG(Ecv~~tIHz6Dw0v~">
+        <field name="VAR">greaterThan</field>
+        <value name="VALUE">
+          <block type="gt" id="9H6Iasm]UN=0o?oB77lS">
+            <field name="comp_value">0</field>
+            <field name="sp_value">0</field>
+            <value name="comp">
+              <block type="variables_get" id="mE:9yz)feoW3wV+;3iUw">
+                <field name="VAR">ai_out</field>
+              </block>
+            </value>
+            <value name="sp">
+              <block type="variables_get" id="*!FJjj(om+=81aF!J6mN">
+                <field name="VAR">product</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="variables_set" id="t`e?vd30.tAKT_:-;Tj@" x="53" y="388">
+    <field name="VAR">do_out</field>
+    <value name="VALUE">
+      <block type="do" id="85bI.-5{dQ-Z}Vj;:sN~">
+        <field name="mode">A</field>
+        <value name="input">
+          <block type="variables_get" id="n7@RO@4l3HU+pcvtg}Y=">
+            <field name="VAR">greaterThan</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+</xml>

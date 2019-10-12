@@ -10,13 +10,14 @@ Blockly.Blocks.bcl_func.HUE = 15;
 Blockly.Blocks.bcl_io.HUE = 120;
 
 Blockly.Blocks['ai'] = {
+    outputType: Blockly.Types.DECIMAL,
     init: function () {
         this.appendDummyInput()
             .appendField("AI");
         this.appendDummyInput()
             .appendField("fieldValue");
         this.appendValueInput("fieldValue")
-            .setCheck(null);
+            .setCheck("Number");
         this.appendDummyInput()
             .appendField("mode");
         this.appendDummyInput()
@@ -30,73 +31,91 @@ Blockly.Blocks['ai'] = {
             .appendField(new Blockly.FieldNumber(0), "out_low")
             .appendField(new Blockly.FieldNumber(0), "out_high");
         this.setInputsInline(true);
-        this.setOutput(true, null);
+        this.setOutput(true, this.outputType.output);
         this.setColour(15);
         this.setTooltip("AI Block");
         this.setHelpUrl("Used to process analog input signals");
+    },
+    getBlockType: function () {
+        return this.outputType
     }
 };
 
 Blockly.Blocks['di'] = {
+    outputType: Blockly.Types.DECIMAL,
     init: function () {
         this.appendDummyInput()
             .appendField("DI");
         this.appendValueInput("fieldValue")
-            .setCheck("Number")
+            .setCheck("Boolean")
             .appendField("fieldValue");
         this.appendDummyInput()
             .appendField("mode")
             .appendField(new Blockly.FieldDropdown([["Manual", "M"], ["Auto", "A"]]), "mode");
         this.setInputsInline(true);
-        this.setOutput(true, "Boolean");
+        this.setOutput(true, this.outputType.output);
         this.setColour(15);
         this.setTooltip("DI Block");
         this.setHelpUrl("");
+    },
+    getBlockType: function () {
+        return this.outputType
     }
+
 };
 
 Blockly.Blocks['gt'] = {
+    outputType: Blockly.Types.BOOLEAN,
     init: function () {
         this.appendDummyInput()
             .appendField("GT");
         this.appendDummyInput()
             .appendField("comp");
         this.appendValueInput("comp")
-            .setCheck(null)
+            .setCheck("Decimal")
             .appendField(new Blockly.FieldNumber(0), "comp_value");
         this.appendDummyInput()
             .appendField("sp");
-        this.appendDummyInput()
+        this.appendValueInput("sp")
+            .setCheck("Decimal")
             .appendField(new Blockly.FieldNumber(0), "sp_value");
         this.setInputsInline(true);
-        this.setOutput(true, ["Number", "Boolean"]);
+        this.setOutput(true, this.outputType.output);
         this.setColour(15);
         this.setTooltip("GT block");
         this.setHelpUrl("");
+    },
+    getBlockType: function () {
+        return this.outputType
     }
 };
 
 Blockly.Blocks['do'] = {
+    outputType: Blockly.Types.NUMBER,
     init: function () {
         this.appendDummyInput()
             .appendField("DO");
         this.appendValueInput("input")
-            .setCheck(null)
+            .setCheck("Decimal")
             .appendField("in_d");
         this.appendDummyInput()
             .appendField("mode")
             .appendField(new Blockly.FieldDropdown([["Manual", "M"], ["Auto", "A"], ["Cascade", "C"]]), "mode");
         this.setInputsInline(true);
-        this.setOutput(true, null);
+        this.setOutput(true, this.outputType.output);
         this.setColour(15);
         this.setTooltip("DO block");
         this.setHelpUrl("");
+    },
+    getBlockType: function () {
+        return this.outputType
     }
 };
 
 
 // IO blocks
 Blockly.Blocks['sr04'] = {
+    outputType: Blockly.Types.NUMBER,
     init: function () {
         this.appendDummyInput()
             .appendField("SR04");
@@ -109,9 +128,12 @@ Blockly.Blocks['sr04'] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldNumber(0, 0, 32), "trig_pin");
         this.setInputsInline(true);
-        this.setOutput(true, null);
+        this.setOutput(true, this.outputType.output);
         this.setColour(120);
         this.setTooltip("");
         this.setHelpUrl("");
+    },
+    getBlockType: function () {
+        return this.outputType
     }
 };

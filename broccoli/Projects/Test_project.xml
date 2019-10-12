@@ -3,8 +3,8 @@
     <field name="VAR">sr04_out</field>
     <value name="VALUE">
       <block type="sr04" id="ly-4x2kdv1H?+CcDKXxx">
-        <field name="echo_pin">0</field>
-        <field name="trig_pin">0</field>
+        <field name="echo_pin">11</field>
+        <field name="trig_pin">12</field>
       </block>
     </value>
     <next>
@@ -12,7 +12,7 @@
         <field name="VAR">ai_out</field>
         <value name="VALUE">
           <block type="ai" id="7Hcs|s`oC,8v[CjFv9yQ">
-            <field name="Mode">Auto</field>
+            <field name="Mode">A</field>
             <field name="xd_low">0</field>
             <field name="xd_high">400</field>
             <field name="out_low">0</field>
@@ -43,7 +43,7 @@
                 <field name="VAR">do_out</field>
                 <value name="VALUE">
                   <block type="do" id="3ypQXk@`N?uX.IM%NXZ}">
-                    <field name="mode">Auto</field>
+                    <field name="mode">A</field>
                     <value name="input">
                       <block type="variables_get" id=")jkNycVvnyP8Ut%Ct0dV">
                         <field name="VAR">comp_out</field>
@@ -53,7 +53,7 @@
                 </value>
                 <next>
                   <block type="io_digitalwrite" id="}A)`__[y%a}|:AuXrzV1">
-                    <field name="PIN">9</field>
+                    <field name="PIN">8</field>
                     <value name="STATE">
                       <block type="variables_get" id="zfO+dJ8SQ)=Byx5MP?8h">
                         <field name="VAR">do_out</field>

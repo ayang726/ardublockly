@@ -241,7 +241,7 @@ Ardublockly.TOOLBOX_XML =
             <field name="VAR" id="D*BmETP^Q]f}7*|a3MX7">ai_out</field>
             <value name="VALUE">
                 <block type="ai">
-                    <field name="Mode">Auto</field>
+                    <field name="Mode">A</field>
                 </block>
             </value>
         </block>
@@ -249,12 +249,12 @@ Ardublockly.TOOLBOX_XML =
             <field name="VAR" id="@O?O7K!1:g2}c%,VJsP">di_out</field>
             <value name="VALUE">
             <block type="di">
-                <field name="mode">Auto</field>
+                <field name="mode">A</field>
             </block>
             </value>
         </block>
         <block type="variables_set">
-            <field name="VAR" id="O}I4Qbu)h-!w.ZZmjU-P">gt_out</field>
+            <field name="VAR" id="O}I4Qbu)h-!w.ZZmjU-P">greaterThan_out</field>
             <value name="VALUE">
                 <block type="gt">
                     <field name="comp_value">0</field>
@@ -266,7 +266,7 @@ Ardublockly.TOOLBOX_XML =
             <field name="VAR" id="S*f}Dl~]lbJ?eoDl1kG!">do_out</field>
             <value name="VALUE">
                 <block type="do">
-                    <field name="mode">Auto</field>
+                    <field name="mode">A</field>
                 </block>
             </value>
         </block>
