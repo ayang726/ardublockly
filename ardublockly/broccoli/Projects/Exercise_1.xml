@@ -71,15 +71,14 @@
       <block type="variables_set" id="|AZG(Ecv~~tIHz6Dw0v~">
         <field name="VAR">greaterThan</field>
         <value name="VALUE">
-          <block type="gt" id="9H6Iasm]UN=0o?oB77lS">
-            <field name="comp_value">0</field>
-            <field name="sp_value">0</field>
-            <value name="comp">
+          <block type="logic_compare" id="Fg+UY7%Mv;PVLN=rpx=y">
+            <field name="OP">GT</field>
+            <value name="A">
               <block type="variables_get" id="mE:9yz)feoW3wV+;3iUw">
                 <field name="VAR">ai_out</field>
               </block>
             </value>
-            <value name="sp">
+            <value name="B">
               <block type="variables_get" id="*!FJjj(om+=81aF!J6mN">
                 <field name="VAR">product</field>
               </block>

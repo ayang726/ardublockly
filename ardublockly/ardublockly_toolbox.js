@@ -219,18 +219,18 @@ Ardublockly.TOOLBOX_XML =
     // '    </block>' +
     // '  </category>' +
     // '  <sep></sep>' +
-    // '  <category id="catComms" name="Comms">' +
-    // '    <block type="serial_setup"></block>' +
-    // '    <block type="serial_print"></block>' +
-    // '    <block type="text_prompt_ext">' +
-    // '      <value name="TEXT">' +
-    // '        <block type="text"></block>' +
-    // '      </value>' +
-    // '    </block>' +
-    // '    <block type="spi_setup"></block>' +
-    // '    <block type="spi_transfer"></block>' +
-    // '    <block type="spi_transfer_return"></block>' +
-    // '  </category>' +
+    '  <category id="catComms" name="Comms">' +
+    '    <block type="serial_setup"></block>' +
+    '    <block type="serial_print"></block>' +
+    '    <block type="text_prompt_ext">' +
+    '      <value name="TEXT">' +
+    '        <block type="text"></block>' +
+    '      </value>' +
+    '    </block>' +
+    '    <block type="spi_setup"></block>' +
+    '    <block type="spi_transfer"></block>' +
+    '    <block type="spi_transfer_return"></block>' +
+    '  </category>' +
     '  <sep></sep>' +
     `<category id="Broccoli_Logical" name="BCL_Logical">
     <block type="variables_set">
@@ -281,6 +281,10 @@ Ardublockly.TOOLBOX_XML =
             <value name="VALUE">
                 <block type="ai">
                     <field name="Mode">A</field>
+                    <field name="xd_low">0</field>
+                    <field name="xd_high">100</field>
+                    <field name="out_low">0</field>
+                    <field name="out_high">100</field>
                 </block>
             </value>
         </block>
