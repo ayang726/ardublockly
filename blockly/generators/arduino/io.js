@@ -55,6 +55,18 @@ Blockly.Arduino['io_digitalread'] = function (block) {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino['io_digitalread_pullup'] = function (block) {
+  var pin = block.getFieldValue('PIN');
+  Blockly.Arduino.reservePin(
+    block, pin, Blockly.Arduino.PinTypes.INPUT, 'Digital Read');
+
+  var pinSetupCode = 'pinMode(' + pin + ', INPUT_PULLUP);';
+  Blockly.Arduino.addSetup('io_' + pin, pinSetupCode, false);
+
+  var code = 'digitalRead(' + pin + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 /**
  * Function for setting the state (Y) of a built-in LED (X).
  * Arduino code: setup { pinMode(X, OUTPUT); }

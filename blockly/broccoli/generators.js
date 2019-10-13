@@ -253,3 +253,16 @@ Blockly.Arduino['xfr'] = function (block) {
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 }
+
+Blockly.Arduino['log'] = function (block) {
+    const value_msg = Blockly.Arduino.valueToCode(block, "msg", Blockly.Arduino.ORDER_ATOMIC)
+    const value_val = Blockly.Arduino.valueToCode(block, "val", Blockly.Arduino.ORDER_ATOMIC)
+
+    Blockly.Arduino.addInclude('ControlSystemLibrary', `#include <${ControlSysLibrary}.h>`);
+
+    Blockly.Arduino.addSetup("Serial_Start", "Serial.begin(9600);", false);
+    let code = (value_msg != `""` && value_msg != "") ? `Serial.print(${value_msg});\n` : "";
+    code += `Serial.println(${value_val});`
+    // TODO: Change ORDER_NONE to the correct strength.
+    return code;
+}

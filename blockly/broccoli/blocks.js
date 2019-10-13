@@ -4,6 +4,7 @@ goog.provide('Blockly.Blocks.bcl_func');
 goog.provide('Blockly.Blocks.bcl_io');
 goog.provide('Blockly.Blocks.bcl_device');
 goog.provide('Blockly.Blocks.bcl_logical');
+goog.provide('Blockly.Blocks.bcl_helper');
 
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Types');
@@ -12,6 +13,7 @@ Blockly.Blocks.bcl_logical.HUE = 15;
 Blockly.Blocks.bcl_device.HUE = 120;
 Blockly.Blocks.bcl_io.HUE = 150;
 Blockly.Blocks.bcl_func.HUE = 200;
+Blockly.Blocks.bcl_helper.HUE = 300;
 
 
 Blockly.Blocks['ai'] = {
@@ -251,5 +253,22 @@ Blockly.Blocks["xfr"] = {
     },
     getBlockType: function () {
         return Blockly.Types.DECIMAL
+    }
+}
+
+Blockly.Blocks["log"] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("Log")
+        this.appendValueInput("msg")
+            .setCheck("Text")
+            .appendField("Message")
+        this.appendValueInput("val")
+            .setCheck(null)
+            .appendField("Value")
+        this.setInputsInline(true)
+        this.setOutput(false)
+        this.setColour(Blockly.Blocks.bcl_helper.HUE)
+        this.setTooltip("print to serial monitor")
     }
 }

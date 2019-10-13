@@ -129,6 +129,7 @@ Ardublockly.TOOLBOX_XML =
     '      </value>' +
     '    </block>' +
     '    <block type="io_digitalread"></block>' +
+    '    <block type="io_digitalread_pullup"></block>' +
     '    <block type="io_builtin_led">' +
     '      <value name="STATE">' +
     '        <block type="io_highlow"></block>' +
@@ -313,9 +314,17 @@ Ardublockly.TOOLBOX_XML =
             </block>
             </value>
         </block>
-        
-        `
-'  </category>' +
-
+        </category>`+
+    `<sep></sep>` +
+    `<category id="helper" name="Helper">
+            <block type="log">
+                <value name="msg"><block type="text"></block></value>
+                <value name="val">
+                    <block type="variables_get">
+                    <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
+                    </block>
+                </value>
+            </block>
+        </category>`+
 
     '</xml>';
