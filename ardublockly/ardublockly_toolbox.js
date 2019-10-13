@@ -268,15 +268,16 @@ Ardublockly.TOOLBOX_XML =
         <value name="VALUE">
         <block type="xfr">
         <field name="selector">0</field>
+        <field name="xfr_time">2</field>
         </block>
         </value>
     </block>
 </category>`+
     '  <sep></sep>' +
 
-    '  <category id="Broccoli" name="BCL">' +
+    '  <category id="BCL_IO" name="BCL_IO">' +
     `   <block type="variables_set">
-            <field name="VAR" id="D*BmETP^Q]f}7*|a3MX7">ai_out</field>
+            <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
             <value name="VALUE">
                 <block type="ai">
                     <field name="Mode">A</field>
@@ -284,7 +285,7 @@ Ardublockly.TOOLBOX_XML =
             </value>
         </block>
         <block type="variables_set">
-            <field name="VAR" id="@O?O7K!1:g2}c%,VJsP">di_out</field>
+            <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
             <value name="VALUE">
             <block type="di">
                 <field name="mode">A</field>
@@ -292,7 +293,7 @@ Ardublockly.TOOLBOX_XML =
             </value>
         </block>
         <block type="variables_set">
-            <field name="VAR" id="S*f}Dl~]lbJ?eoDl1kG!">do_out</field>
+            <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
             <value name="VALUE">
                 <block type="do">
                     <field name="mode">A</field>
@@ -300,7 +301,7 @@ Ardublockly.TOOLBOX_XML =
             </value>
         </block>
         <block type="variables_set">
-            <field name="VAR" id="NoFOK%;.O*=)lJOTJ^Gz">sr04_out</field>
+            <field name="VAR" id="xn*syC.*yir9V}-ZDKEt">var1</field>
             <value name="VALUE">
             <block type="sr04">
                 <field name="echo_pin">0</field>

@@ -231,7 +231,8 @@ Blockly.Arduino['xfr'] = function (block) {
     const value_in1 = Blockly.Arduino.valueToCode(block, "in1", Blockly.Arduino.ORDER_ATOMIC)
     const value_in2 = Blockly.Arduino.valueToCode(block, "in2", Blockly.Arduino.ORDER_ATOMIC)
     const value_selector = Blockly.Arduino.valueToCode(block, "selector", Blockly.Arduino.ORDER_ATOMIC)
-    const fieldIn_selector = block.getFieldValue("selector_input")
+    const fieldIn_selector = block.getFieldValue("selector")
+    const xfr_time = block.getFieldValue("xfr_time")
 
     const blockId = bcl_block_count++;
     const objectName = "xfr_" + blockId
@@ -240,8 +241,10 @@ Blockly.Arduino['xfr'] = function (block) {
 
     if (value_selector == "") {
         let variableCode = `bool selectorVar_${blockId} = ${fieldIn_selector};`
-        Blockly.Arduino.addVariable("bcl_var_" + blockId, variableCode, false)
+        Blockly.Arduino.addVariable("bcl_var_selector_" + blockId, variableCode, false)
     }
+    const variableCode = `bool xfrTimeVar_${blockId} = ${xfr_time};`
+    Blockly.Arduino.addVariable("bcl_var_xfr_time_" + blockId, variableCode, false)
 
     let declarationCode = `XFR ${objectName} = XFR(&${value_in1}, &${value_in2}, &${value_selector !== "" ? value_selector : 'selectorVar_' + blockId})`;
     Blockly.Arduino.addDeclaration('bcl_block_' + blockId, declarationCode);

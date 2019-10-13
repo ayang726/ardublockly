@@ -30,11 +30,11 @@ Blockly.Blocks['ai'] = {
         this.appendDummyInput()
             .appendField("xd_scale (low-high)")
             .appendField(new Blockly.FieldNumber(0), "xd_low")
-            .appendField(new Blockly.FieldNumber(0), "xd_high");
+            .appendField(new Blockly.FieldNumber(100), "xd_high");
         this.appendDummyInput()
             .appendField("out_scale (low-high)")
             .appendField(new Blockly.FieldNumber(0), "out_low")
-            .appendField(new Blockly.FieldNumber(0), "out_high");
+            .appendField(new Blockly.FieldNumber(100), "out_high");
         this.setInputsInline(true);
         this.setOutput(true, this.outputType.output);
         this.setColour(Blockly.Blocks.bcl_io.HUE);
@@ -126,11 +126,11 @@ Blockly.Blocks['sr04'] = {
         this.appendDummyInput()
             .appendField("ECHO_PIN");
         this.appendDummyInput()
-            .appendField(new Blockly.FieldNumber(0, 0, 32), "echo_pin");
+            .appendField(new Blockly.FieldNumber(0), "echo_pin");
         this.appendDummyInput()
             .appendField("TRIG_PIN");
         this.appendDummyInput()
-            .appendField(new Blockly.FieldNumber(0, 0, 32), "trig_pin");
+            .appendField(new Blockly.FieldNumber(0), "trig_pin");
         this.setInputsInline(true);
         this.setOutput(true, this.outputType.output);
         this.setColour(Blockly.Blocks.bcl_device.HUE);
@@ -239,7 +239,11 @@ Blockly.Blocks["xfr"] = {
         this.appendValueInput("selector")
             .setCheck(["Number", "Boolean"])
             .appendField("selector")
-            .appendField(new Blockly.FieldNumber(0), "selector_input")
+            .appendField(new Blockly.FieldNumber(0), "selector")
+        this.appendDummyInput("xfr_time")
+            // .setCheck("Decimal")
+            .appendField("xfr_time")
+            .appendField(new Blockly.FieldNumber(2), "xfr_time")
         this.setInputsInline(true)
         this.setOutput(true, "Decimal")
         this.setColour(Blockly.Blocks.bcl_logical.HUE)
