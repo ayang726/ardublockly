@@ -15,7 +15,7 @@ from bottle import static_file, run, default_app, redirect, abort
 from six import iteritems
 # This package modules
 from ardublocklyserver import actions
-
+import json
 
 #
 # Configure server
@@ -408,8 +408,8 @@ def handler_code_post():
     response_dict.update({'success': success,
                           'ide_mode': ide_mode,
                           'ide_data': {
-                              'std_output': std_out,
-                              'err_output': err_out,
+                              'std_output': str(std_out), #these two lines' implementation have been altererd to include str()
+                              'err_output': str(err_out), #these two lines' implementation have been altererd to include str()
                               'exit_code': exit_code}})
     if not success:
         response_dict.update({

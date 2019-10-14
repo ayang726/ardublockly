@@ -1,71 +1,14 @@
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="variables_set" id="G3ibv1j1rk9PO%ix#R*z" x="79" y="25">
-    <field name="VAR">sr04_out</field>
-    <value name="VALUE">
-      <block type="sr04" id="ly-4x2kdv1H?+CcDKXxx">
-        <field name="echo_pin">11</field>
-        <field name="trig_pin">12</field>
+  <block type="log" id="5;#GU^z?bd3W;{u#Mlm2" x="233" y="312">
+    <value name="msg">
+      <block type="text" id="Xvkf1?++Xx7!IKTwT:xX">
+        <field name="TEXT"></field>
       </block>
     </value>
-    <next>
-      <block type="variables_set" id=":8-U+BmP/:)Joy`*}Xxh">
-        <field name="VAR">ai_out</field>
-        <value name="VALUE">
-          <block type="ai" id="7Hcs|s`oC,8v[CjFv9yQ">
-            <field name="Mode">A</field>
-            <field name="xd_low">0</field>
-            <field name="xd_high">400</field>
-            <field name="out_low">0</field>
-            <field name="out_high">400</field>
-            <value name="fieldValue">
-              <block type="variables_get" id="i^?omr_*cvsyg!A/EzKC">
-                <field name="VAR">sr04_out</field>
-              </block>
-            </value>
-          </block>
-        </value>
-        <next>
-          <block type="variables_set" id="oG0XbUBP]27^V47:{Xjw">
-            <field name="VAR">comp_out</field>
-            <value name="VALUE">
-              <block type="gt" id=":`qd*iagX#Xm+bk%MrK=">
-                <field name="comp_value">2</field>
-                <field name="sp_value">25</field>
-                <value name="comp">
-                  <block type="variables_get" id="T:QTA-eYDb2aDftD#QX5">
-                    <field name="VAR">ai_out</field>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <next>
-              <block type="variables_set" id="ItvfX@hqs{hW;V?eeK+^">
-                <field name="VAR">do_out</field>
-                <value name="VALUE">
-                  <block type="do" id="3ypQXk@`N?uX.IM%NXZ}">
-                    <field name="mode">A</field>
-                    <value name="input">
-                      <block type="variables_get" id=")jkNycVvnyP8Ut%Ct0dV">
-                        <field name="VAR">comp_out</field>
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <next>
-                  <block type="io_digitalwrite" id="}A)`__[y%a}|:AuXrzV1">
-                    <field name="PIN">8</field>
-                    <value name="STATE">
-                      <block type="variables_get" id="zfO+dJ8SQ)=Byx5MP?8h">
-                        <field name="VAR">do_out</field>
-                      </block>
-                    </value>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </next>
+    <value name="val">
+      <block type="math_number" id="rAIloL%OEBeFT4pt_v`:">
+        <field name="NUM">0</field>
       </block>
-    </next>
+    </value>
   </block>
 </xml>
