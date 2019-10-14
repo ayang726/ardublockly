@@ -110,6 +110,7 @@ def load_arduino_cli(sketch_path):
             print('\nOpening the sketch in the Arduino IDE...')
         print('CLI command: %s' % ' '.join(cli_command))
         # Python 2 needs the input to subprocess.Popen to be in system encoding
+
         if sys.version_info[0] < 3:
             sys_locale = locale.getpreferredencoding()
             cli_command = [x.encode(sys_locale) for x in cli_command]
@@ -119,7 +120,7 @@ def load_arduino_cli(sketch_path):
             subprocess.Popen(cli_command, shell=False)
             exit_code = 0
         else:
-            # Launch the Arduino CLI in a subprocess and capture output data
+            # Launch the Arduino CLI in a subprocess and capture output data\
             process = subprocess.Popen(
                 cli_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                 shell=False)

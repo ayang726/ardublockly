@@ -2,7 +2,7 @@
   <block type="variables_set" id="u-nK=dtibh.ZId=Jlz}u" x="47" y="33">
     <field name="VAR">digitalPinIn</field>
     <value name="VALUE">
-      <block type="io_digitalread" id="_92r^%j1,XXYrgY*I1b]">
+      <block type="io_digitalread_pullup" id="rp5?kN7BMyqGTq7AJ)1.">
         <field name="PIN">4</field>
       </block>
     </value>
@@ -56,8 +56,13 @@
       <block type="math_arithmetic" id="!e[(@-XS;FuUUzpb:)PB">
         <field name="OP">MULTIPLY</field>
         <value name="A">
-          <block type="variables_get" id="vT?k`n`_sr.!E3EH`W%A">
-            <field name="VAR">di_out</field>
+          <block type="variables_set_type" id="Xu!:f+nMB#,kl}%P;-dx">
+            <field name="VARIABLE_SETTYPE_TYPE">DECIMAL</field>
+            <value name="VARIABLE_SETTYPE_INPUT">
+              <block type="variables_get" id="vT?k`n`_sr.!E3EH`W%A">
+                <field name="VAR">di_out</field>
+              </block>
+            </value>
           </block>
         </value>
         <value name="B">
@@ -105,7 +110,7 @@
     <field name="PIN">8</field>
     <value name="STATE">
       <block type="variables_get" id="1N#D-w4C(@58)A!OXsgF">
-        <field name="VAR">di_out</field>
+        <field name="VAR">do_out</field>
       </block>
     </value>
   </block>
